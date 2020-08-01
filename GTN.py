@@ -30,13 +30,12 @@ with open('data/' + dataset_name + '/labels.pkl', 'rb') as f:
 num_nodes = edges[0].shape[0]
 node_features = torch.from_numpy(node_features).type(torch.FloatTensor)
 
-t_labels = np.array(labels)
-train_node = torch.from_numpy(t_labels[0][:, 0]).type(torch.LongTensor)
-train_label = torch.from_numpy(t_labels[0][:, 1]).type(torch.LongTensor)
-valid_node = torch.from_numpy(t_labels[1][:, 0]).type(torch.LongTensor)
-valid_label = torch.from_numpy(t_labels[1][:, 1]).type(torch.LongTensor)
-test_node = torch.from_numpy(t_labels[2][:, 0]).type(torch.LongTensor)
-test_label = torch.from_numpy(t_labels[2][:, 1]).type(torch.LongTensor)
+train_node = torch.from_numpy(np.array(labels[0])[:,0]).type(torch.LongTensor)
+train_label = torch.from_numpy(np.array(labels[0])[:,1]).type(torch.LongTensor)
+valid_node = torch.from_numpy(np.array(labels[1])[:,0]).type(torch.LongTensor)
+valid_label = torch.from_numpy(np.array(labels[1])[:,1]).type(torch.LongTensor)
+test_node = torch.from_numpy(np.array(labels[2])[:,0]).type(torch.LongTensor)
+test_label = torch.from_numpy(np.array(labels[2])[:,1]).type(torch.LongTensor)
 
 for i, edge in enumerate(edges):
     if i == 0:
